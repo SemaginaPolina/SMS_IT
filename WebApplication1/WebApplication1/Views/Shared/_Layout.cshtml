@@ -17,33 +17,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+
+                
+                @{ 
+                    var logo = string.Format("~/Content/Images/Uploads/surf.jpg");
+                }
+                    <p><a href="/Feed/Index"><input type="image" src="~/Content/Images/Uploads/surf.jpg" border="0" class="center-block" /></a></p>
+</div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-right">
+                <ul class="nav navbar-nav pull-right" >
 
-                    @if (Session["IserId"] != null)
+                    @if (Session["UserId"] != null)
                     {
-                        //показываем пользователя
-                    <li>
-
-                        @if (Session["Photo"] != Guid.Empty.ToString())
-                        {
-
-                            var url = string.Format("~/Content/Images/Uplpoads/{0}.jpg", Session["Photo"].ToString());
-
-                            <img src=@Url.Content(url) height="25" />
-
-                        }
-                    </li>
-                        <li>Session["Nickname"]</li>
+                        <li>
+                            @{
+                                var photo = Session["Photo"];
+                                if (photo != Guid.Empty.ToString())
+                                {
+                                    var url = string.Format("~/Content/Images/Uploads/{0}.jpg", photo);
+                                    <img src=@Url.Content(url) height="25" />
+                                }
+                            }
+                        </li>
+                        <li>@Session["Nickname"]</li>
                         <li>@Html.ActionLink("Выйти", "Logout", "Home")</li>
-                    
                     }
                     else
                     {
                         <li>@Html.ActionLink("Войти", "Index", "Home")</li>
                         <li>@Html.ActionLink("Регистрация", "Index", "Register")</li>
+
                     }
 
 
