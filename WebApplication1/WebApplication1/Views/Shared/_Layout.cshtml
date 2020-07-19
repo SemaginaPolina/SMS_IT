@@ -20,15 +20,33 @@
                 @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Продажа досок", "BoardSelling", "Home")</li>
-                    <li>@Html.ActionLink("Продавец", "Index", "Seller")</li>
+                <ul class="nav navbar-nav pull-right">
 
-                    <li>@Html.ActionLink("Стефания", "Index", "My")</li>
-                    <li>@Html.ActionLink("Агафья", "AboutMe", "My")</li>
+                    @if (Session["IserId"] != null)
+                    {
+                        //показываем пользователя
+                    <li>
+
+                        @if (Session["Photo"] != Guid.Empty.ToString())
+                        {
+
+                            var url = string.Format("~/Content/Images/Uplpoads/{0}.jpg", Session["Photo"].ToString());
+
+                            <img src=@Url.Content(url) height="25" />
+
+                        }
+                    </li>
+                        <li>Session["Nickname"]</li>
+                        <li>@Html.ActionLink("Выйти", "Logout", "Home")</li>
+                    
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Войти", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Регистрация", "Index", "Register")</li>
+                    }
+
+
                 </ul>
             </div>
         </div>

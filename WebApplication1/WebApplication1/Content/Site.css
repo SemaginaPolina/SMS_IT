@@ -39,3 +39,7 @@ textarea {
 .cur {
     font-style: italic;
 }
+
+label{
+    width:100%
+}

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebApplication1.DAL;
+using WebApplication1.Models.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -16,32 +18,35 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model)
         {
-            ViewBag.Message = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                var userInDb = dbContext.Users.FirstOrDefault(c => c.Nickname == model.Nickname && c.Password == model.Password);
+                if (userInDb != null)
+                {
+                    FormsAuthentication.SetAuthCookie(userInDb.Nickname, model.RememberMe);
+                    Session["UserId"] = userInDb.Id.ToString();
+                    Session["Nickname"] = userInDb.Nickname.ToString();
+                    Session["Photo"] = userInDb.Photo.ToString();
 
-            return View();
+                    return RedirectToAction("Index", "Feed");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Неверный псевдоним или пароль");
+                }
+            }
+            return View("Index", model);
         }
-
-        public ActionResult Contact()
+        public ActionResult Logout(LoginViewModel model)
         {
-            ViewBag.Message = "Your contact page.";
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Request.Cookies.Clear();
 
-            return View();
-        }
-        public ActionResult BoardSelling()
-        {
-            ViewBag.Message = "Серфинг";
-
-            ViewBag.Ads = "Покупайте наши доски!";
-
-            ViewBag.Prices = new[] { 100, 120, 140, 99 };
-
-            var user = dbContext.Users.FirstOrDefault();
-
-            ViewBag.Seller = user;
-
-            return View();
+            return RedirectToAction("Index", "Feed");
         }
     }
 }

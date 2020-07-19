@@ -11,8 +11,10 @@ namespace WebApplication1.Models.DBModels
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Прикрепить изображение")]
         public Guid Photo { get; set; }
 
+        [Display(Name = "Введите текст"), MaxLength(4095)]
         public string Text { get; set; }
 
         public DateTime PublishDate { get; set; }

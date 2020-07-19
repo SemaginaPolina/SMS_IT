@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
+using System;
 using WebApplication1.Models.DBModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.DAL
 {
@@ -9,14 +11,31 @@ namespace WebApplication1.DAL
         {
             var user = new User
             {
-                Nickname = "clame",
+                Nickname = "user",
+                Password = "123",
                 LastName = "Бойков",
                 Name = "Володя",
                 Email = "clame@gmail.com",
                 About = "Я такой хороший"
             };
 
+            var post1 = new Post
+            {
+                Text = "Первый текст",
+                PublishDate = DateTime.Now,
+                Author = user
+            };
+
+            var post2 = new Post
+            {
+                Text = "Второй текст",
+                PublishDate = DateTime.Now,
+                Author = user
+            };
+
             context.Users.Add(user);
+            context.Posts.Add(post1);
+            context.Posts.Add(post2);
             context.SaveChanges();
         }
     }
