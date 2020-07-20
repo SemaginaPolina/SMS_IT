@@ -12,21 +12,21 @@ namespace WebApplication1.Models.DBModels
         [Key]
         public int Id { get; set; }
 
-        [Display(Name="Псевдоним")]
+        [Display(Name="Псевдоним*")]
         [Required(ErrorMessage ="Ошибка в псевдониме"), MinLength(3) ,MaxLength(20)]
         public string Nickname { get; set; }
 
-        [Display(Name = "Почта")]
+        [Display(Name = "Почта*")]
         [Required(ErrorMessage = "Ввод электроной почты обязательнен!")]
         [EmailAddress(ErrorMessage ="Неверно указан электронный адрес")]
         public string Email { get; set; }
 
 
-        [Display(Name = "Пароль")]
+        [Display(Name = "Пароль*")]
         [Required(ErrorMessage = "Ошибка в пароле"), MinLength(6), MaxLength(20)]
         public string Password { get; set; }
 
-        [Display(Name = "Подтвердите пароль")]
+        [Display(Name = "Подтвердите пароль*")]
         [NotMapped]
         public string PasswordConfirm { get; set; }
 
