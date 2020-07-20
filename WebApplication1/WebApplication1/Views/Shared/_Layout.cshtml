@@ -18,29 +18,32 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                
-                @{ 
-                    var logo = string.Format("~/Content/Images/Uploads/surf.jpg");
-                }
-                    <p><a href="/Feed/Index"><input type="image" src="~/Content/Images/Uploads/surf.jpg" border="0" class="center-block" /></a></p>
+                <a href="@Url.Action("Index","Feed")">
+                    <img src="@Url.Content("~/Content/Images/logo.jpg")" height="40"/>
+                </a>
 </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-right" >
-
+                <ul class="nav navbar-nav pull-right">
+                    
                     @if (Session["UserId"] != null)
                     {
-                        <li>
+                        <div>
                             @{
                                 var photo = Session["Photo"];
-                                if (photo != Guid.Empty.ToString())
+                                if (photo != null)
                                 {
-                                    var url = string.Format("~/Content/Images/Uploads/{0}.jpg", photo);
-                                    <img src=@Url.Content(url) height="25" />
+                                    <img src="@Url.Content(photo.ToString())" height="25" class="round" />
                                 }
                             }
-                        </li>
-                        <li>@Session["Nickname"]</li>
-                        <li>@Html.ActionLink("Выйти", "Logout", "Home")</li>
+                        
+                        @Session["Nickname"]
+                        
+                        
+                            <a href="@Url.Action("Logout","Home")">
+                                <img src="@Url.Content("~/Content/Images/exit.jpg")" />
+                            </a>
+                            </div>
+                        
                     }
                     else
                     {
@@ -55,11 +58,7 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
+        @RenderBody()        
     </div>
 
     @Scripts.Render("~/bundles/jquery")

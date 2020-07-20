@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebApplication1.DAL;
+using WebApplication1.Helpers;
 using WebApplication1.Models.ViewModels;
 
 namespace WebApplication1.Controllers
@@ -26,10 +27,10 @@ namespace WebApplication1.Controllers
                 var userInDb = dbContext.Users.FirstOrDefault(c => c.Nickname == model.Nickname && c.Password == model.Password);
                 if (userInDb != null)
                 {
-                    FormsAuthentication.SetAuthCookie(userInDb.Nickname, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(userInDb.Nickname, false);
                     Session["UserId"] = userInDb.Id.ToString();
-                    Session["Nickname"] = userInDb.Nickname.ToString();
-                    Session["Photo"] = userInDb.Photo.ToString();
+                    Session["Nickname"] = userInDb.Nickname;
+                    Session["Photo"] = ImageUrlHelper.GetUrl(userInDb.Photo);
 
                     return RedirectToAction("Index", "Feed");
                 }
