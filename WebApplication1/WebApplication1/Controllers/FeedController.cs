@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
         // GET: Feed
         public ActionResult Index()
         {
-            var posts = dbContext.Posts.ToList();
+            var posts = dbContext.Posts.OrderByDescending(c => c.Id).ToList();
             ViewBag.Posts = posts;
 
             return View();
@@ -26,8 +26,8 @@ namespace WebApplication1.Controllers
         {
             if (imageData == null && model.Text == null)
             {
-                ModelState.AddModelError(string.Empty, "Не загружено изображение или отсутствует текст");
-                var posts1 = dbContext.Posts.ToList();
+                ModelState.AddModelError(string.Empty, "Не загружено изображение и отсутствует текст");
+                var posts1 = dbContext.Posts.OrderByDescending(c=> c.Id).ToList();
                 ViewBag.Posts = posts1;
                 return View("Index", model);
             }
@@ -39,14 +39,17 @@ namespace WebApplication1.Controllers
                 model.Photo = ImageSaveHelper.SaveImage(imageData);
             }
 
-            var userId = 1;//todo брать ид авт пользов
+            var userId = Convert.ToInt32(Session["UserId"]);
             var userInDb = dbContext.Users.FirstOrDefault(c => c.Id == userId);
+
             model.Author = userInDb;
 
             dbContext.Posts.Add(model);
             dbContext.SaveChanges();
-            var posts = dbContext.Posts.ToList();
+
+            var posts = dbContext.Posts.OrderByDescending(c => c.Id).ToList();
             ViewBag.Posts = posts;
+
             return View("Index");
         }
     }

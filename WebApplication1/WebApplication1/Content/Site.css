@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #f6f6f8;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -8,7 +9,9 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.container{
+    width:900px;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -19,8 +22,8 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
-    max-width: 280px;
+textarea {    
+    max-width: 800px;
 }
 
 
@@ -41,6 +44,37 @@ textarea {
 }
 
 label{
-    width:100%
+    width:100%;
 }
+.full-width {
+    width: 100%;
+    max-width: 600px;
+}
+
+.tiny-panel{
+    margin: 20px auto;
+    width:350px;
+}
+.wide-panel {
+    margin: 20px auto;
+    width: 450px;
+}
+
+.add-post-area{
+    width:100%;
+    max-width:100%;
+}
+.round {
+    border-radius: 800px; /* Радиус скругления */
+    border: none; /* Параметры рамки */
+}
+.panel-heading {
+    background-color: #c8d3d9 !important;
+}
+.block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+   
 

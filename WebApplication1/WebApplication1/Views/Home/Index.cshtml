@@ -1,43 +1,42 @@
 ﻿@model WebApplication1.Models.ViewModels.LoginViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Клуб любителей серфинга - авторизация";
 }
 
 @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <form>
+<form>
 
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                Авторизация
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Nickname)
-                    @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Password)
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "Password" } })
-                </div>
-                <div class="form-group">
-                    @Html.CheckBoxFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.LabelFor(model => model.RememberMe)
-                </div>
-                <div>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                </div>
-                <button type="submit" class="btn btn-group-sm">Войти</button>
-                <div>
-                    Нет аккаунта?
-                    <button type="submit" class="btn">Зарегистрироваться</button>
-                </div>
-
-            </div>
+    <div class="panel panel-info tiny-panel">
+        <div class="panel-heading">
+            Авторизация
         </div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nickname)
+                @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password)
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "Password" } })
+            </div>
+            <div class="form-group" style="text-align:center">
+                @Html.CheckBoxFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.LabelFor(model => model.RememberMe)
+            </div>
+            <div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit" class="btn btn-group-sm block" >Войти</button>
 
 
-
-    </form>
+        </div>
+        
+    </div>
+    <div style="text-align: center">
+        Нет аккаунта?
+        <button type="submit" class="btn">Зарегистрироваться</button>
+    </div>    
+</form>
 
 }

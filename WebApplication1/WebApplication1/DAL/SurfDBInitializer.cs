@@ -5,14 +5,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.DAL
 {
-    public class SurfDBInitializer : DropCreateDatabaseAlways<SurfDbContext>
+    public class SurfDBInitializer : //DropCreateDatabaseAlways<SurfDbContext>
+        DropCreateDatabaseIfModelChanges<SurfDbContext>
     {
+        
         protected override void Seed(SurfDbContext context)
         {
             var user = new User
             {
                 Nickname = "user",
-                Password = "123",
+                Password = "123456",
                 LastName = "Бойков",
                 Name = "Володя",
                 Email = "clame@gmail.com",
