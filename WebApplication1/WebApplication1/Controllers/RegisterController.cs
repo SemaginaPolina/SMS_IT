@@ -43,6 +43,12 @@ namespace WebApplication1.Controllers
 
                 if (imageData!= null)
                 {
+                    if (!ImageFormatHelper.IsJpg(imageData))
+                    {
+                        ModelState.AddModelError(string.Empty, "Загруженный файл не картинка формата JPG");
+                        return View("Index", model);
+                    }
+
                     model.Photo = ImageSaveHelper.SaveImage(imageData);
                 }
                 dbContext.Users.Add(model);

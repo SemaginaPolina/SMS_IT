@@ -43,6 +43,14 @@ namespace WebApplication1.Controllers
 
             if (imageData != null)
             {
+                if (!ImageFormatHelper.IsJpg(imageData))
+                {
+                    ModelState.AddModelError(string.Empty, "Загруженный файл не картинка формата JPG");
+                    var posts1 = dbContext.Posts.OrderByDescending(c => c.Id).ToList();
+                    ViewBag.Posts = posts1;
+                    return View("Index", model);
+                }
+
                 model.Photo = ImageSaveHelper.SaveImage(imageData);
             }
 
@@ -63,6 +71,8 @@ namespace WebApplication1.Controllers
 
             var posts = dbContext.Posts.OrderByDescending(c => c.Id).ToList();
             ViewBag.Posts = posts;
+
+            ModelState.Clear();
 
             return View("Index");
         }
