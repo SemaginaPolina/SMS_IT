@@ -33,7 +33,15 @@ namespace WebApplication1.Controllers
                     ModelState.AddModelError(string.Empty, "Пользователь с таким псевдонимом уже существует");
                     return View("Index", model);
                 }
-                if(imageData!= null)
+
+                var userEmailDb = dbContext.Users.FirstOrDefault(c => c.Email == model.Email);
+                if (userEmailDb != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Пользователь с такой почтой уже существует");
+                    return View("Index", model);
+                }
+
+                if (imageData!= null)
                 {
                     model.Photo = ImageSaveHelper.SaveImage(imageData);
                 }
