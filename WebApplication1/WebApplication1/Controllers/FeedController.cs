@@ -42,6 +42,13 @@ namespace WebApplication1.Controllers
             var userId = Convert.ToInt32(Session["UserId"]);
             var userInDb = dbContext.Users.FirstOrDefault(c => c.Id == userId);
 
+            if(userInDb == null)
+            {
+                //пользователь не авторизован
+                TempData["errorMessage"] = "Время сессии истекло. Авторизуйтесь повторно";
+                return RedirectToAction("Index", "Home");
+            }
+
             model.Author = userInDb;
 
             dbContext.Posts.Add(model);
