@@ -77,5 +77,11 @@ label{
     margin-right: auto
 }
 
+.field-validation-error {
+    color: #DD3333;
+}
 
+.input-validation-error {
+    border: 1px solid #DD3333;
+}
 
