@@ -124,14 +124,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddProductController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\FastController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
+    <Compile Include="Controllers\SendController.cs" />
     <Compile Include="DAL\SurfDBInitializer.cs" />
     <Compile Include="DAL\SurfDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,7 +144,9 @@
     <Compile Include="Helpers\ImageFormatHelper.cs" />
     <Compile Include="Helpers\ImageSaveHelper.cs" />
     <Compile Include="Helpers\ImageUrlHelper.cs" />
+    <Compile Include="Models\DBModels\Order.cs" />
     <Compile Include="Models\DBModels\Post.cs" />
+    <Compile Include="Models\DBModels\Product.cs" />
     <Compile Include="Models\DBModels\User.cs" />
     <Compile Include="Models\DBModels\ViewModels1\MyModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
@@ -153,7 +159,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\exit.jpg" />
     <Content Include="Content\Images\logo.jpg" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logo1.jpg" />
     <Content Include="Content\Images\user.png" />
+    <Content Include="Content\firm.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -167,11 +176,22 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\LoadDoc.js" />
+    <Content Include="Scripts\LoadingFilter.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\move.js" />
+    <Content Include="Scripts\Link.js" />
+    <Content Include="Scripts\progres.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\Show.js" />
+    <Content Include="Scripts\table.js" />
+    <Content Include="Scripts\top.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -188,7 +208,10 @@
     <Content Include="Views\My\Index.cshtml" />
     <Content Include="Views\My\AboutMe.cshtml" />
     <Content Include="Views\Feed\Index.cshtml" />
-    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Send\Index.cshtml" />
+    <Content Include="Views\Fast\Index.cshtml" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\AddProduct\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

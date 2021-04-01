@@ -1,17 +1,43 @@
 ﻿@model WebApplication1.Models.DBModels.User
 @{
-    ViewBag.Title = "А кто продавец?";
+    ViewBag.Title = "Gliging - корзина";
 }
 
-<h2>Информация о продавце</h2>
+<h2>Корзина</h2>
 
-Никнейм : @Model.Nickname
-<br>
-Фамилия : @Model.LastName
-<br>
-Имя : @Model.Name
-<br>
-Почта: @Model.Email
-<br>
-О себе : @Model.About
-<br>
+
+<div class="panel-body">
+    @using (Html.BeginForm("Index", "Feed", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <form>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control ", placeholder = "Пример: ex@example.ex", width = "100" } })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", title = "" } })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Contact)
+                @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control", title = "" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address)
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", title = "" } })
+            </div>
+            <div class="form-group">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                * - поля, обязательные для заполнения
+                <button type="submit" class="btn pull-right">Оформить заказ</button>
+            </div>
+
+        </form>
+
+    }
+</div>

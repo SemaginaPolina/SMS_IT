@@ -7,19 +7,28 @@ using System.Web;
 namespace WebApplication1.Models.DBModels
 {
     public class Post
-    {
+    {     
+
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Прикрепить изображение")]
-        public Guid Photo { get; set; }
+        [Display(Name = "Укажите изображение")]
+        public string Img { get; set; }
 
-        [Display(Name = "Введите текст"), MaxLength(4095, ErrorMessage = "Максимальное количестко символов - 4095")]
-        public string Text { get; set; }
+        [Display(Name = "Введите имя")]
+        public string Name { get; set; }
 
-        public DateTime PublishDate { get; set; }
+        [Display(Name = "Введите категорию")]
+        public string Category { get; set; }
 
-        public virtual User Author { get; set; }
+        [Display(Name = "Введите цену")]
+        public decimal Price { get; set; }
+
+        [Display(Name = "Введите цвет")]
+        public string Color { get; set; }
+
+        [Display(Name = "Введите размер")]
+        public string Size { get; set; }
 
     }
 }

@@ -8,9 +8,9 @@ namespace WebApplication1.Models.ViewModels
 {
     public class LoginViewModel
     {
-        [Display (Name ="Псевдоним"), MaxLength(20)]
-        [Required(ErrorMessage ="Ошибка в псевдониме")]
-        public string Nickname { get; set; }
+        [Display (Name = "Почта"), MaxLength(20)]
+        [Required(ErrorMessage ="Ошибка в почте")]
+        public string Email { get; set; }
 
         [Display(Name = "Пароль"), MaxLength(20)]
         [Required(ErrorMessage = "Ошибка в пароле")]

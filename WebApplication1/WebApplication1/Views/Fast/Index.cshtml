@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="content test">
+
+    <p>Разбегаются глаза и не знаете, что выбрать? Предлагаем ответить на простые вопросы и наш консультат подберет Вам подходяшую модель!</p>
+    <form enctype="multipart/form-data" id="test" method="post">
+        <ol>
+            <li id="genderLabel">Укажите ваш пол (если ребенок, то "Дети")<span>*</span>: </li>
+            <input type="radio" name="gender" value="ie" checked> Мужской
+            <Br>
+            <input type="radio" name="gender" value="ie"> Женский
+            <Br>
+            <input type="radio" name="gender" value="ie"> Дети
+            <Br>
+
+            <li id="sizeLabel">Укажите размер стопы (размерная сетка находится на @Html.ActionLink("главной", "Index", "Feed") главной странице</a>)<span>*</span>: </li>
+            <input type="number" name="size" id="size" size="40" style="color: black">
+
+            <li id="costLabel">Напишите приемлимую цену: </li>
+            <input type="number" name="cost" id="cost" size="40" style="color: black">
+
+            <li id="choiseLabel">Что именно вы хотите(коньки, ролики, экипироку)<span>*</span>:</li>
+            <input type="text" name="choise" id="choise" size="40" title="Допускается ввод только русских букв" style="color: black">
+
+            <li id="brendLabel">Есть предпочтения по фирме? </li>
+            <input type="text" id="searchField" autocomplete="off" style="color: black" title="Допускается ввод русских, английский букв и цифр , и ." />
+            <br />
+            <div id="firm"> </div>
+
+
+            <li id="experienceLabel">Есть опыт занятия видом спотра?</li>
+            <input type="text" name="experience" id="experience" size="40" title="Допускается ввод русских, английский букв и цифр , и ." style="color: black">
+
+            <li id="colorLabel">Есть предпочтения по цвету? </li>
+            <select id="color" style="color: black">
+                <option value="черный" style="color: black">Черный</option>
+                <option value="розовый" style="color: black">Розовый</option>
+                <option value="голубой" style="color: black">Голубой</option>
+                <option value="зеленый" style="color: black">Зеленый</option>
+                <option value="серый" style="color: black">Серый</option>
+                <option value="белый" style="color: black">Белый</option>
+                <option value="любой" style="color: black">Любой</option>
+            </select>
+            <li id="emailLabel"> Ваш e-mail</li>
+            <input type="text" class="inputText" name="email" id="email" style="color: black">
+            <li id="commentLabel">Ваш комментарий: </li>
+            <textarea name="comment" id="comment" cols="40" rows="3" title="Допускается ввод русских, английский букв и цифр , и ." style="color: black"></textarea></p>
+        </ol>
+
+
+        <div id="myProgress">
+            <div id="myBar_2">10%</div>
+        </div>
+
+        <p style="text-align: right;"><span>*</span> - обязательные поля</p>
+</div>
+
+
+<p style="text-align: left; padding-left: 40px;">
+    <input type="submit" name="send" value="Отправить">
+    <input type="reset" value="Очистить" onclick="cleanMove()">
+</p>
+
+    </form>
+
+</div>
+<script src="../Scripts/script.js" type="text/javascript"></script>
+<script src="../Scripts/move.js" type="text/javascript"></script>
+<script src="../Scripts/Link.js" type="text/javascript"></script>

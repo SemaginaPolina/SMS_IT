@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
@@ -9,59 +9,40 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div class="main-info">
+        Телефон: 8 800 555 35 35  Почта: gliding-shop@yandex.ru
+    </div>
     <div class="navbar navbar-inverse navbar-fixed-top surfheading">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="head border-menu navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
 
                 <a href="@Url.Action("Index","Feed")">
-                    <img src="@Url.Content("~/Content/Images/logo.jpg")" height="40"/>
+                    <img src="@Url.Content("~/Content/Images/logo1.jpg")" height="40" />
                 </a>
-</div>
+
+            </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-right">
-                    
-                    @if (Session["UserId"] != null)
-                    {
-                        <div>
-                            @{
-                                var photo = Session["Photo"];
-                                if (photo != null)
-                                {
-                                    <img src="@Url.Content(photo.ToString())" height="25" class="img-circle" />
-                                }
-                            }
-                        
-                        @Session["Nickname"]
-                        
-                        
-                            <a href="@Url.Action("Logout","Home")">
-                                <img src="@Url.Content("~/Content/Images/exit.jpg")" />
-                            </a>
-                            </div>
-                        
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Войти", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Регистрация", "Index", "Register")</li>
+                <ul class="nav navbar-nav center-block">
 
-                    }
-
-
+                    <li>@Html.ActionLink("Каталог", "Index", "Catalog")</li>
+                    <li>@Html.ActionLink("Быстрый подбор", "Index", "Fast")</li>
+                    <li>@Html.ActionLink("Добавить товар", "Index", "AddProduct")</li>
+                    @*<li>@Html.ActionLink("Корзина", "Index", "Seller")</li>*@
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()        
+        @RenderBody()
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

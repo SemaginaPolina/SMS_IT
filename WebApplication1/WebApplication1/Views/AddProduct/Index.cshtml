@@ -1,0 +1,63 @@
+﻿@using WebApplication1.Models.DBModels
+
+
+@model WebApplication1.Models.DBModels.Post
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content test">
+    <p>Добавить новый товар</p>
+    @using (Html.BeginForm("AddPost", "AddProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <form>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Img)
+            @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Img)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category)
+            @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Category)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price)
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Color)
+            @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Color)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Size)
+            @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Size)
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn pull-right">Добавить</button>
+        </div>
+
+    </form>
+            }
+
+    </div>
+
